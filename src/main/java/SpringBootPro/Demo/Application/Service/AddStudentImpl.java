@@ -49,28 +49,7 @@ public class AddStudentImpl implements AddStudent{
 				statement.setString(2, Details.get("value2"));
 			
 			int result = statement.executeUpdate();
-			return "Details Updated Successfully!!";
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
-	public String Get_JWT_From_DB(String Token) {
-	
-		try {
-			PreparedStatement statement = connection.prepareStatement(
-			"Select JWT From Users Where JWT = ?"
-			);
-			statement.setString(1, Token);
-			ResultSet result = statement.executeQuery();
-			String jwt = null;
-	        if (result.next()) {
-	            // Retrieve the JWT value from the ResultSet
-	            jwt = result.getString("JWT");
-	        }
-			return jwt;
+			return result == 1 ? "Details Updated Successfully!!" : "Something Went Wrong!!";
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

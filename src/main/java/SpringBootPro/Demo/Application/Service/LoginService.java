@@ -11,5 +11,6 @@ import SpringBootPro.Demo.Application.model.Login;
 public interface LoginService {
 	public List<Login> getLoginData();
 	public String AddtokentoDB(String Token, String ID);
+	public String getTokenFromDB(String ID);
 
 }

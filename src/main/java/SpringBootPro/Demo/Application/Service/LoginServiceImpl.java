@@ -64,5 +64,26 @@ public class LoginServiceImpl implements LoginService {
 		}
 		return null;
 	}
+	
+	@Override
+	public String getTokenFromDB(String ID){
+		try {
+			PreparedStatement statement = connection.prepareStatement(
+			"Select JWT From Users Where id = ?"		
+			);
+			statement.setString(1, ID);
+			ResultSet result = statement.executeQuery();
+			String Token= null;
+			if(result.next()) {
+				Token = result.getString("JWT");
+			}
+			return Token;
+					
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 }

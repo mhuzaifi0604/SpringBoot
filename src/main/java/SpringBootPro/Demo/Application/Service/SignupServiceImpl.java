@@ -30,13 +30,13 @@ public class SignupServiceImpl implements SignupService{
 	public String getUserDetails(Map<String, Object> Details) {
 		try {
 			Signup signup = new Signup();
-			System.out.println(Details.get("username") + ", " + Details.get("password") + ", " + Details.get("First_name") + ", " + Details.get("Last_name") + ", " + Details.get("email"));
+			System.out.println(Details.get("userName") + ", " + Details.get("password") + ", " + Details.get("firstName") + ", " + Details.get("lastName") + ", " + Details.get("email"));
 			PreparedStatement statement = connection.prepareStatement(
 				    "INSERT INTO Users(username, pass, first_name, last_name, email, Created_At, Updated_At, JWT) VALUES ('" +
-				    Details.get("username") + "','" +
+				    Details.get("userName") + "','" +
 				    Details.get("password") + "','" +
-				    Details.get("First_name") + "','" +
-				    Details.get("Last_name") + "','" +
+				    Details.get("firstName") + "','" +
+				    Details.get("lastName") + "','" +
 				    Details.get("email") + "', Now(), Now(), null);"
 				);
 			int result = statement.executeUpdate();

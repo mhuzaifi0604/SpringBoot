@@ -9,5 +9,4 @@ import org.springframework.stereotype.Repository;
 public interface AddStudent {
 	public String AddStudenttoDB(Map<String, Object> Details);
 	public String Update_User_Details(Map<String, String> Details);
-	public String Get_JWT_From_DB(String Token);
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -19,6 +20,7 @@ import SpringBootPro.Demo.Application.Service.AddStudent;
 import SpringBootPro.Demo.Application.model.Login;
 import SpringBootPro.Demo.Application.model.Signup;
 
+@CrossOrigin(origins = "http://localhost:4200/", maxAge = 3600)
 @RestController
 public class LoginController {
 
@@ -30,8 +32,6 @@ public class LoginController {
 	
 	@Autowired
 	private AddStudent addStudent;
-	
-	public String subject;
 
 	@PostMapping(path = "/Login", consumes = "application/json", produces="application/json")
 	public Map<String, String> GetLoginCreds(@RequestBody Map<String, Object> Creds) {
@@ -42,10 +42,9 @@ public class LoginController {
 		 for (Login login : data) {
 			    if (login.getUsername().equals(Creds.get("username")) && login.getPassword().equals(Creds.get("password"))) {
 			        System.out.println("Found matching credentials: " + login);
-			        String Token = JWTUtil.generateToken(login.getUsername());
+			        String Token = JWTUtil.generateToken(login.getId());
 			        String result = this.login_service.AddtokentoDB(Token, login.getId());
 			        System.out.printf("Token Addition: " + result);
-			        subject = login.getUsername();
 			        Converter.put("Token", Token);
 			        Converter.put("Message", "Logged In Successfully!!");
 					return Converter; 
@@ -66,17 +65,18 @@ public class LoginController {
 	
 	@PostMapping(path="/AddStudent", consumes="application/json", produces="application/json")
 	public Map<String, String> AddStudent(@RequestBody Map<String, Object> details, @RequestHeader (name="Authorization") String JWT) {
-		System.out.println("Token: " + JWT.substring(7));
-		String got_token = this.addStudent.Get_JWT_From_DB(JWT.substring(7));
-		System.out.printf("Token from DB: "+ got_token);
-//		System.out.printf("Extraction: " + JWTUtil.extractUsername((String) details.get("Token")) + ", Subject: " + subject);
-		 Map<String, String> Returner = new HashMap<>();
-//		if((JWTUtil.extractUsername((String) details.get("Token"))).equals(subject)) {
-//			String result = this.addStudent.AddStudenttoDB(details);
-//			Returner.put("Status", result);
-//			return Returner;
-//		}
-		Returner.put("Status", "Testing JWT in Header!!");
+		Map<String, String> Returner = new HashMap<>();
+		String TokenFromDB = login_service.getTokenFromDB(JWTUtil.extractUsername(JWT.substring(7)));
+		if(TokenFromDB.equals(JWT.substring(7))) {
+			System.out.printf("\nTokens Matched");
+			if(JWTUtil.extractUsername(TokenFromDB).equals(JWTUtil.extractUsername(JWT.substring(7)))){
+				System.out.printf("\nToken IDs Matched!!");
+				String result = this.addStudent.AddStudenttoDB(details);
+				Returner.put("Status", result);
+				return Returner;
+			}
+		}
+		Returner.put("Status", "Validation Unsuccessful!!");
 		return Returner;
 	}
 	
