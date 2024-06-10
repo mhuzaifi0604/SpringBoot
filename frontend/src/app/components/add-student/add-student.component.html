@@ -1,0 +1,20 @@
+<div class="Parent">
+    <h1>Add Student</h1>
+    <form class="form" [formGroup]="addStudentForm" (ngSubmit)="add_student()">
+        <label for="name">
+            Name: 
+            <input formControlName="student" type="text" placeholder="Enter Student Name...">
+        </label>
+        <label for="class">
+            Class: 
+            <input formControlName="class" type="text" placeholder="Enter Student's Class...">
+        </label>
+        <label for="grade">
+            Grade: 
+            <input formControlName="grade" type="text" placeholder="Enter Student's grade...">
+        </label>
+        <button>
+            Add Student
+        </button>
+    </form>
+</div>
