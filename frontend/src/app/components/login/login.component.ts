@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import ValidateForm from '../../helpers/validateform';
 import { loginService } from './login.service';
+import {Router} from '@angular/router';
 // import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   isText: boolean = false;
   eyeIcon: string = 'fa-eye-slash';
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private loginService: loginService) {}
+  constructor(private fb: FormBuilder, private loginService: loginService, private router: Router) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -34,10 +35,9 @@ export class LoginComponent implements OnInit {
    const password = this.loginForm.get('password')?.value;
     if(this.loginForm.valid) {
       this.loginService.login(username, password).subscribe(
-        response => {
-          // this.toastr.success('Login successful!', 'Success');
-          // console.log("passing....")
-          console.log(response);
+        (response:any) => {
+          localStorage.setItem("Token", response.token);
+          this.router.navigate(['../add-student']);
         },
         error => {
           console.error(error);
