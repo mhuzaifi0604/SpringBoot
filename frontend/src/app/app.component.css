@@ -1,0 +1,39 @@
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Distribute items evenly across the navbar */
+  align-items: center; /* Center items vertically */
+  padding: 10px 5%; /* Adjust padding as needed */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5); /* Example: Add a subtle box-shadow */
+  border-bottom: 1px solid green;
+}
+
+.title-container {
+  flex-grow: 1; /* Allow the title to take up remaining space */
+  text-align: center; /* Center the title horizontally */
+  padding-left: 12%;
+  padding-top: 10px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
+
+.nav-links a {
+  font-family: cursive;
+  color: green;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.nav-links a.active-link {
+  color: black;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  text-decoration: underline;
+  /* Add any other styles for active links */
+}

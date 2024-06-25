@@ -1,0 +1,52 @@
+.audit-table {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    box-shadow: gray -5px -5px 10px 0px;
+  }
+  
+  .table-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid green; /* Green border for header */
+  }
+  
+  .table-row {
+    border: 2px solid #000; /* Black border for rows */
+    border-radius: 30px;
+    max-width: 50%;
+    flex-wrap: wrap;
+  }
+  
+  .odd-row {
+    border-color: #FFA500; /* Orange border for odd rows */
+  }
+  
+  .even-row {
+    border-color: #FFFF00; /* Yellow border for even rows */
+  }
+  
+  .table-cell {
+    border-right: 2px solid #000;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .table-cell:first-child {
+    border-left: 2px solid transparent; /* Transparent left border for first cell */
+  }
+  
+  .table-cell:last-child {
+    border-right: 2px solid transparent; /* Transparent right border for last cell */
+  }
+  
+  .table-row.last-row {
+    border-bottom: 2px solid #000; /* Black bottom border for last row */
+  }
+  
+  .table-row:hover {
+    background-color: lightgrey;
+    cursor: pointer;
+  }
+  
