@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -20,10 +23,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    // ToastrModule.forRoot(),
+   MatPaginatorModule,
+   MatTableModule,
     ReactiveFormsModule
   ],
-  providers: [SignupService],
+  providers: [SignupService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

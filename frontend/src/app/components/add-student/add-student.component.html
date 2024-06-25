@@ -1,20 +1,24 @@
-<div class="Parent">
-    <h1>Add Student</h1>
-    <form class="form" [formGroup]="addStudentForm" (ngSubmit)="add_student()">
-        <label for="name">
-            Name: 
-            <input formControlName="student" type="text" placeholder="Enter Student Name...">
-        </label>
-        <label for="class">
-            Class: 
-            <input formControlName="class" type="text" placeholder="Enter Student's Class...">
-        </label>
-        <label for="grade">
-            Grade: 
-            <input formControlName="grade" type="text" placeholder="Enter Student's grade...">
-        </label>
-        <button>
-            Add Student
-        </button>
-    </form>
-</div>
+
+    <div class="dashboard-container">
+        <div class="left-side">
+            <img src="https://static.tildacdn.com/tild6530-3666-4539-b735-346161316561/Exams-bro_1.png" alt="Image" style="filter: drop-shadow(0.5rem 0.5rem 0.75rem gray); width: 60%; height: 70%; object-fit: cover; background-blend-mode: lighten;">
+        </div>
+        <div class="right-side">
+            <form class="form" [formGroup]="addStudentForm" (ngSubmit)="addUser()">
+                <p class="text">Add New User</p>
+                <div class="form-container">
+                    <label for="name" class="label">Username</label>
+                    <input formControlName="user_id" class="input" type="text" placeholder="Enter Username...">
+                  </div>
+                  <div class="form-container">
+                    <label for="name" class="label">Password</label>
+                    <input formControlName="pass_word" type="password" class="input" placeholder="Enter Password...">
+                  </div>
+                  <div class="form-container">
+                    <label for="name" class="label">Confirm Password</label>
+                    <input formControlName="confirm_password" type="password" class="input" placeholder="Confirm Password...">
+                  </div>
+                <button class="submit" type="submit">Add</button>
+            </form>
+        </div>
+    </div>

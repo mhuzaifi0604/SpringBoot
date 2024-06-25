@@ -17,10 +17,9 @@ import { Observable } from 'rxjs';
 
 export class AddStudentComponent implements OnInit {
   addStudentForm = new FormGroup({
-      student: new FormControl("", Validators.required),
-      class: new FormControl("", [Validators.required, Validators.min(1), Validators.max(20)]),
-      grade: new FormControl("", [Validators.required, Validators.min(1), Validators.max(2),
-    ])
+      user_id: new FormControl("", Validators.required),
+      pass_word: new FormControl("", [Validators.required, Validators.min(1), Validators.max(20)]),
+      confirm_password: new FormControl("", Validators.required)
   });
 
   type: string = 'password';
@@ -45,24 +44,33 @@ export class AddStudentComponent implements OnInit {
     };
   
     // Make the HTTP POST request with the headers
-    return this.http.post(`http://localhost:8080/AddStudent`, this.addStudentForm.value, httpOptions);
+    return this.http.post(`http://localhost:8080/api/addUser`, {
+      user_id: this.addStudentForm.value['user_id'],
+      pass_word: this.addStudentForm.value['pass_word']
+    }, httpOptions);
   }
   
-  add_student() {
+  addUser() {
     console.log("Form Values to be sent: ", this.addStudentForm.value);
+    if(this.addStudentForm.value['confirm_password'] === this.addStudentForm.value['pass_word']){
     this.addStudentService().subscribe(
       (response:any) => {
         console.log("Response: ", response);
+        alert(response.Status)
         this.addStudentForm.patchValue({
-          student: '',
-          class: '',
-          grade: ''
+          user_id: '',
+          pass_word: '',
+          confirm_password: ''
         })
+
       },
       (error:any) => {
         console.error("Error adding Student: ", error);
       }
     )
+  }else{
+    alert("Passwords Do Not Match!!")
+  }
   }
 
 

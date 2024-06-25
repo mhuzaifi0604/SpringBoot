@@ -32,22 +32,32 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     const username = this.loginForm.get('username')?.value;
-   const password = this.loginForm.get('password')?.value;
-    if(this.loginForm.valid) {
+    const password = this.loginForm.get('password')?.value;
+    
+    if (this.loginForm.valid) {
       this.loginService.login(username, password).subscribe(
-        (response:any) => {
-          localStorage.setItem("Token", response.token);
-          this.router.navigate(['../add-student']);
+        (response: any) => {
+          console.log("Response: ", response);
+  
+          if (response.token === null && response.message === "No Such User Found!!") {
+            // Login failed
+            alert('Login failed. No such user found!');
+          } else {
+            // Login successful
+            localStorage.setItem("Token", response.token);
+            this.router.navigate(['../dashboard']);
+          }
         },
         error => {
           console.error(error);
+          // Handle error if necessary
         }
       );
-      console.log(this.loginForm.valid)
     } else {
+      // Form is invalid
       ValidateForm.validateAllFormsFields(this.loginForm);
       alert('Your form is invalid!')
     }
-  }
+  }  
   
 }

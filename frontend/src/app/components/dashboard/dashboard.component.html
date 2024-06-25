@@ -1,0 +1,42 @@
+  <div class="dashboard-container">
+    <a class="pmd" href="https://www.pmdpk.com/" target="_blank">PAKISTAN MNP DATABASE (GUARANTEE) LIMITED</a>
+    <div style="display: flex; justify-content: center; align-items: center; gap: 0.2rem; margin-top: 2%;">
+      <img src="../../../assets/ufone.jpg" style="width: 150px; height: 80px; object-fit: contain;" alt="ufone">
+      <img src="../../../assets/jazz.png" style="width: 150px; height: 80px; object-fit: contain;" alt="jazz">
+      <img src="../../../assets/telenor.png" style="width: 150px; height: 80px; object-fit: contain;" alt="telenor">
+      <img src="../../../assets/zong.png" style="width: 150px; height: 80px; object-fit: contain;" alt="zong">
+  </div>
+  
+    <p style="display: flex; width: 100%; justify-content: center; align-items: center; color: green; font-family: sans-serif; font-size: large; font-weight: normal; margin-top: 5px;">PMD is owned by 04 Cellular Mobile Operators</p>
+    <p style=" display: flex; width: 60%; justify-content: center; align-items: center; color: black; font-family: sans-serif; font-size: medium; font-weight: bold; margin-top: 2px;">
+      PMD is a credible technology partner of the CMOs and contributes significantly towards achieving their business objectives. With more than 12 years of delivering Telco-grade Information and Communication Services to the Cellular Mobile Operators, PMD has unmatched Service Availability and Security Infrastructure.
+    </p>  
+    <div class="stats-container">
+        <div class="stat-card ">
+          <img src="../../../assets/users.jpg" alt="Users" style="width: 100px; height: 100px; background-color: transparent; border: 1px solid black; padding: 2px;">
+          <span class="stat-number">{{Total_Users}}</span>
+          <div class="stat-label">Total Users</div>
+        </div>
+        <div class="stat-card">
+          <img src="../../../assets/query.png" alt="Users" style="width: 100px; height: 100px; background-color: transparent; border: 1px solid black; padding: 2px;">
+          <span class="stat-number">{{Total_Audits}}</span>
+          <div class="stat-label">Queries Made</div>
+        </div>
+        <div class="stat-card">
+          <img src="../../../assets/me.jpg" alt="Users" style="width: 100px; height: 100px; background-color: transparent; border: 1px solid black; padding: 2px;">
+          <span class="stat-number">{{My_Queries}}</span>
+          <div class="stat-label">My Queries</div>
+        </div>
+      </div>
+      <div class="graphs-container">
+        <div class="graph-card">
+          <h3>User Growth</h3>
+          <canvas id="userGrowthChart">
+          </canvas>
+        </div>
+        <div class="graph-card">
+          <h3>Sales Trend</h3>
+          <canvas id="salesTrendChart"></canvas>
+        </div>
+      </div>
+    </div>

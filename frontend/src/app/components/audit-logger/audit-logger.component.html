@@ -1,0 +1,45 @@
+<body style="display: flex; flex-direction: column; align-items: center;">
+  <p style="display: flex;
+  justify-content:center; 
+  align-items: center;
+  text-align: center;
+  color: black; 
+  font-size: xx-large; 
+  font-weight: bold; 
+  font-family: sans-serif;
+  margin-top: 2%;" >Query Logs</p>
+  <div style="display: flex; flex-direction: row; width: 100%; justify-content: center; gap: 1rem; margin-bottom: 2%;">
+    <input type="text" placeholder="Search" style="border: 1px solid black; width: 30%; border-radius: 10px; padding: 2px;">
+    <button>🔍</button>
+  </div>
+  
+  <table class="audit-table">
+    <thead>
+      <tr>
+        <th class="table-header">IP Address</th>
+        <th class="table-header">Log Time</th>
+        <th class="table-header">Machine</th>
+        <th class="table-header">OS User</th>
+        <th class="table-header">Triggered Query</th>
+        <th class="table-header">User ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of auditDetails; let index = index">
+        <tr class="table-row"
+            [ngClass]="{
+              'last-row': index === auditDetails.length,
+              'odd-row': index % 2 === 0,
+              'even-row': index % 2 !== 0
+            }">
+          <td class="table-cell">{{ item.ip_address }}</td>
+          <td class="table-cell">{{ item.logtime }}</td>
+          <td class="table-cell">{{ item.machine }}</td>
+          <td class="table-cell">{{ item.os_user }}</td>
+          <td class="table-cell">{{ item.triggered_query }}</td>
+          <td class="table-cell">{{ item.userid }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</body>
