@@ -1,7 +1,7 @@
 import {
   DOCUMENT,
   isPlatformBrowser
-} from "./chunk-YMZRSRY7.js";
+} from "./chunk-7OK6ZBV4.js";
 import {
   ANIMATION_MODULE_TYPE,
   APP_ID,
@@ -37,8 +37,6 @@ import {
   ViewChild,
   ViewContainerRef,
   ViewEncapsulation$1,
-  __spreadProps,
-  __spreadValues,
   afterNextRender,
   animationFrameScheduler,
   asapScheduler,
@@ -98,7 +96,11 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-EJHPWBKE.js";
+} from "./chunk-6YL2B6RQ.js";
+import {
+  __spreadProps,
+  __spreadValues
+} from "./chunk-ASLTLD6L.js";
 
 // node_modules/@angular/cdk/fesm2022/coercion.mjs
 function coerceBooleanProperty(value) {
@@ -6935,4 +6937,4 @@ export {
   CdkScrollableModule,
   ScrollingModule
 };
-//# sourceMappingURL=chunk-SENDTXK7.js.map
+//# sourceMappingURL=chunk-RCWOBK5M.js.map

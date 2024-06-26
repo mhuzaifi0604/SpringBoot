@@ -30,10 +30,11 @@
 }
 
 .nav-links a.active-link {
-  color: black;
-  font-style: italic;
+  color: white;
   font-weight: bolder;
   font-size: 1.5rem;
-  text-decoration: underline;
+  padding: 5px;
+  background-color: green;
+  border-radius: 10px;
   /* Add any other styles for active links */
 }

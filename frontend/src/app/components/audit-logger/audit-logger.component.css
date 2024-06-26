@@ -12,20 +12,23 @@
     border: 2px solid green; /* Green border for header */
   }
   
-  .table-row {
-    border: 2px solid #000; /* Black border for rows */
+  tr {
+    border: 1px solid green; /* Black border for rows */
     border-radius: 30px;
-    max-width: 50%;
+    max-width: 30%;
     flex-wrap: wrap;
   }
+  tr:hover{
+    background-color: #ECFFDC;
+  }
   
-  .odd-row {
-    border-color: #FFA500; /* Orange border for odd rows */
+  /* .odd-row {
+    border-color: #FFA500; 
   }
   
   .even-row {
-    border-color: #FFFF00; /* Yellow border for even rows */
-  }
+    border-color: #FFFF00; 
+  } */
   
   .table-cell {
     border-right: 2px solid #000;
@@ -34,19 +37,83 @@
   }
   
   .table-cell:first-child {
-    border-left: 2px solid transparent; /* Transparent left border for first cell */
+    border-left: 2px solid transparent;
   }
   
   .table-cell:last-child {
-    border-right: 2px solid transparent; /* Transparent right border for last cell */
+    border-right: 2px solid transparent;
   }
   
   .table-row.last-row {
-    border-bottom: 2px solid #000; /* Black bottom border for last row */
+    border-bottom: 2px solid #000;
   }
   
   .table-row:hover {
     background-color: lightgrey;
     cursor: pointer;
   }
-  
+  .filter-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2%;
+}
+
+#filterValue {
+    border: 1px solid #ccc;
+    width: 30%;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.filter-dropdown {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    width: auto;
+}
+
+.filter-dropdown:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-container {
+  width: 80%;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.label {
+  position: absolute;
+  top: -0.875rem; /* Adjust as needed for positioning */
+  left: 0.5rem; /* Adjust as needed for positioning */
+  background-color: #ffffff;
+  padding: 0 0.5rem;
+  font-size: 1.125rem;
+  color: green; /* Example color for text-xblue */
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #00aee0; /* Example color for border-nbluelight */
+  border-radius: 0.5rem;
+  background-color: inherit;
+  outline: none;
+  color: #fdb813; /* Example color for text-[#fdb813] */
+  ::placeholder {
+    color: #424770; /* Example color for placeholder:text-[#424770] */
+    opacity: 0.5;
+  }
+}
+
+.input:focus {
+  border-color: #00aee0; /* Example color for focus:border-[#00aee0] */
+}

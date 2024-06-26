@@ -11,10 +11,10 @@ import {
   _ViewRepeaterOperation,
   _isNumberValue,
   isDataSource
-} from "./chunk-SENDTXK7.js";
+} from "./chunk-RCWOBK5M.js";
 import {
   DOCUMENT
-} from "./chunk-YMZRSRY7.js";
+} from "./chunk-7OK6ZBV4.js";
 import {
   Attribute,
   BehaviorSubject,
@@ -86,7 +86,8 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-EJHPWBKE.js";
+} from "./chunk-6YL2B6RQ.js";
+import "./chunk-ASLTLD6L.js";
 
 // node_modules/@angular/cdk/fesm2022/table.mjs
 var _c0 = [[["caption"]], [["colgroup"], ["col"]], "*"];

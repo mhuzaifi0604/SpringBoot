@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
