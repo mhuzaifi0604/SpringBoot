@@ -1,7 +1,6 @@
 import { Component, OnInit, Injectable, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule, NgClass, NgFor, NgIf } from '@angular/common';
-// import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 
 const EXCEL_EXTENSION = '.xlsx';
@@ -19,6 +18,7 @@ export class AuditLoggerComponent implements OnInit {
   filteredAuditDetails: any[] = [];
   selectedColumn: string = '';
   filterValue: string = '';
+  selectedDate: string = '';
   @ViewChild('auditTable', { static: false }) userTable!: ElementRef;
   
   constructor(private http: HttpClient) {}
@@ -32,6 +32,7 @@ export class AuditLoggerComponent implements OnInit {
       }
     }).subscribe(
       (response: any) => {
+        console.log("Response: ", response)
         this.auditDetails = response;
         this.filteredAuditDetails = response;
       },
@@ -51,16 +52,30 @@ export class AuditLoggerComponent implements OnInit {
     this.filterTable();
   }
 
+  onDateChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.selectedDate = target.value;
+    this.filterTable();
+  }
+
   filterTable() {
-    if (!this.selectedColumn || !this.filterValue) {
-      this.filteredAuditDetails = this.auditDetails; // Show all details if no filter is applied
-    } else {
-      this.filteredAuditDetails = this.auditDetails.filter(item => {
+    this.filteredAuditDetails = this.auditDetails;
+
+    if (this.selectedDate) {
+      this.filteredAuditDetails = this.filteredAuditDetails.filter(item => {
+        const logTime = new Date(item.logtime).toISOString().split('T')[0];
+        return logTime === this.selectedDate;
+      });
+    }
+
+    if (this.selectedColumn && this.filterValue) {
+      this.filteredAuditDetails = this.filteredAuditDetails.filter(item => {
         const columnValue = item[this.selectedColumn]?.toString().toLowerCase();
         return columnValue.includes(this.filterValue);
       });
     }
   }
+
   exportTableElmToExcel(element: ElementRef, fileName: string): void {
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element.nativeElement);
     // generate workbook and add the worksheet
@@ -69,6 +84,7 @@ export class AuditLoggerComponent implements OnInit {
     // save to file
     XLSX.writeFile(workbook, `${fileName}${EXCEL_EXTENSION}`);
   }
+
   exportElmToExcel(): void {
     this.exportTableElmToExcel(this.userTable, 'user_data');
   }

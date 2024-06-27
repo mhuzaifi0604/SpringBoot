@@ -8,21 +8,27 @@
     font-weight: bold; 
     font-family: sans-serif;
     margin-top: 2%;" >Query Logs</p>
-  <div style="display: flex; flex-direction: row; width: 100%; justify-content: center; gap: 1rem; margin-bottom: 2%;">
+  <div style="display: flex; flex-direction: row; width: 80%; justify-content: center; gap: 1rem; margin-bottom: 2%;">
     <select id="filterDropdown" (change)="onFilterChange($event)" style="border: 1px solid black; border-radius: 10px; padding: 2px;">
       <option value="" disabled selected>Filter by Column</option>
       <option value="ip_address">IP Address</option>
-      <option value="logtime">Log Time</option>
       <option value="machine">Machine</option>
       <option value="os_user">OS User</option>
       <option value="triggered_query">Triggered Query</option>
       <option value="userid">User ID</option>
+      <option value="db_origin">Database</option>
     </select>
     <div class="form-container">
       <label for="name" class="label">Search</label>
       <input 
-      type="text" id="filterValue" class="input" (input)="onFilterChange($event)" placeholder="Enter value to filter" 
-      placeholder="Search For Record..."
+      style="width: 100%;"
+      type="text" id="filterValue" class="input" (input)="onFilterChange($event)" placeholder="Search For Record..."
+      >
+    </div>
+    <div class="form-container">
+      <label for="datePicker" class="label">Date</label>
+      <input 
+      type="date" id="datePicker" class="input" (change)="onDateChange($event)" 
       >
     </div>
   </div>
@@ -36,6 +42,7 @@
         <th class="table-header">OS User</th>
         <th class="table-header">Triggered Query</th>
         <th class="table-header">User ID</th>
+        <th class="table-header">Database</th>
       </tr>
     </thead>
     <tbody>
@@ -46,6 +53,7 @@
         <td class="table-cell">{{ item.os_user }}</td>
         <td class="table-cell">{{ item.triggered_query }}</td>
         <td class="table-cell">{{ item.userid }}</td>
+        <td class="table-cell">{{ item.db_origin }}</td>
       </tr>
     </tbody>
   </table>

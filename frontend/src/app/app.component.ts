@@ -14,20 +14,20 @@ export class AppComponent {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private location: Location) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.showNavbar = !event.url.includes('/login');
+        this.showNavbar = !event.url.includes('/Login');
       }
     });
   }
   logout(){
-    this.router.navigate(['/login']).then(() => {
+    this.router.navigate(['/Login']).then(() => {
       // Add a new state
-      window.history.pushState(null, '', '/login');
+      window.history.pushState(null, '', '/Login');
       // Replace the current state
-      window.history.pushState(null, '', '/login');
+      window.history.pushState(null, '', '/Login');
       // Go back to the new state
       window.history.back();
 
-      this.location.replaceState('/login'); // clear browser history
+      this.location.replaceState('/Login'); // clear browser history
     });
   }
 }
